@@ -1,0 +1,528 @@
+[[chapter1]]
+P.13 Equivalence Exercises
+1. (b)
+  \xy.xz = \mn.mz
+
+2. (c)
+  \xy.xxy = \a.(\b.aab)
+
+3. (b)
+  \xyz.zx = \tos.st
+
+P.17 Chapter Exercises
+- Combinators
+1. \x.xxx is a combinator
+2. \xy.zx is not a combinator (since z is a free variable)
+3. \xyz.xy(zx) is a combinator
+4. \xyz.xy(zxy) is a combinator
+5. \xy.xy(zxy) is not a combinator (since z is a free variable)
+
+- Normal form or diverge?
+1. \x.xxx can be reduced to a normal form.
+2. (\z.zz)(\y.yy) diverges.
+3. (\x.xxx)z can be reduced to a normal form, zzz.
+
+- Beta reduce
+1.
+(\abc.cba)zz(\wv.w)
+[a := z]
+(\bc.cbz)z(\wv.w)
+[b := z]
+(\c.czz)(\wv.w)
+[c := (\wv.w)]
+(\wv.w)zz
+[w := z]
+(\v.z)z
+[v := z]
+z
+
+2.
+(\x.\y.xyy)(\a.a)b
+[x := (\a.a)]
+(\y.(\a.a)yy)b
+[a := y]
+(\y.yy)b
+[y := b]
+bb
+
+3.
+(\y.y)(\x.xx)(\z.zq)
+[y := (\x.xx)]
+(\x.xx)(\z.zq)
+[x := (\z.zq)]
+(\z.zq)(\z.zq)
+[z := (\z.zq)]
+(\z.zq)q
+[z := q]
+qq
+
+4.
+(\z.z)(\z.zz)(\z.zy)
+-- alpha
+(\a.a)(\b.bb)(\c.cy)
+[a := (\b.bb)]
+(\b.bb)(\c.cy)
+[b := (\c.cy)]
+(\c.cy)(\c.cy)
+-- alpha
+(\c.cy)(\d.dy)
+[c := (\d.dy)]
+(\d.dy)y
+[d := y]
+yy
+
+5.
+(\x.\y.xyy)(\y.y)y
+-- alpha
+(\x.\y.xyy)(\z.z)y
+[x := (\z.z)]
+(\y.(\z.z)yy)y
+[z := y]
+(\y.yy)y
+alpha
+(\a.aa)y
+[a := y]
+yy
+
+6.
+(\a.aa)(\b.ba)c
+[a := (\b.ba)]
+(\b.ba)(\b.ba)c
+[b := (\b.ba)]
+(\b.ba)ac
+[b := a]
+aac
+
+7.
+(\xyz.xz(yz))(\x.z)(\x.a)
+-- alpha
+(\xyd.xd(yd))(\b.z)(\c.a)
+[x := (\b.z)]
+(\yd.(\b.z)d(yd))(\c.a)
+[b := d]
+(\yd.zyd)(\c.a)
+[y := (\c.a)]
+(\d.z(\c.a)d)
+[c := d]
+(\d.za)
+
+[[chapter2]]
+P.35 Ecercises: Comprehension Check
+1.  on REPL
+2.
+circleArea x = 3.14 * (x * x)
+3.
+circleArea' x = pi * x * x
+
+P.39 Exercises: Parentheses and Association
+1. change
+2. same
+3. change
+
+P.46 Exercises: Heal and Sick
+1. area x = 3.14 * (x * x)
+2. double x = x * 2
+3.
+x = 7
+y = 10
+f = x + y
+
+P.49 Exercises: A Head Code
+1. in my head: 5  OK
+2. in my head: 25  OK
+3. in my head: 30  OK
+4. in my head: 6  OK
+
+
+[P.60 Chapter Exercises]
+P.61 Parenthesization
+1. 2 + 2 * 3 - 1  = 2 + (2 * 3) - 1 = (2 + (2 * 3)) - 1
+2. (^) 10 $ 1 + 1 = (^) 10 (1 + 1)
+3. 2 ^ 2 * 4 ^ 5 + 1 = (2 ^ 2) * (4 ^ 5) + 1 = ((2 ^ 2) * (4 ^ 5)) + 1
+
+P.61 Equivalent expressions
+1. yes : 1 + 1 = 2
+2. yes : 10 ^ 2 = 100  10 + 9 * 10 = 10 + 90 = 100
+3. no : 400 - 37 = 363  (-) 37 400 = -363
+4. no : 100 `div` 3 = 33  100 / 3 = 33.3...
+5. no : 2 * 5 + 18 = 28   2 * (5 + 18) = 2 * 23 = 46
+
+P.62 More fun with functions
+Prelude> z = 7
+Prelude> y = z + 8
+Prelude> x = y ^ 2
+Prelude> waxOn = x*5
+Prelude> waxOn
+1125
+
+1.
+   10 + waxOn = 1135
+   (+10) waxOn = 1135
+   (-) 15 waxOn = -1110
+   (-) waxOn 15 = 1110
+2. on REPL
+3. 1125 * 3 = 3375 will be performed.
+4. ch2/MoreFunWithFunctions.hs
+5. on REPL
+6. ch2/MoreFunWithFunctions.hs
+7. on REPL
+
+
+[[chapter3]]
+P.74 Exercises: Scope
+1. yes
+2. no
+3. no
+4. yes
+
+P.77 Exercises: Syntax Errors
+1. NG: -> (++) [1,2,3] [4,5,6]
+2. NG: -> "<3" ++ " Haskell"
+3. OK
+
+[[P.81 Chapter Exercises]]
+P.81 Reading Syntax
+1.
+a) OK
+b) NG : -> (++) [1,2,3] [4,5,6]
+c) OK
+d) NG : -> "hello" ++ " world"
+e) NG : -> "hello" !! 4
+f) OK
+g) NG : -> take 4 "lovely"
+h) OK
+2.
+a) a
+b) c
+c) e
+d) a
+e) b
+
+P.82 Building functions
+1.
+a) "Curry is awesome" ++ "!"
+b) "Curry is awesome!" !! 4
+c) drop 9 "Curry is awesome!"
+2...5
+ch3/buildingFunctions.hs
+6. ch3/reverse.hs
+
+
+[[Chapter4]]
+P.90 Exercises: Mood Swing
+1. Mood
+2. Blah, Woot
+3. changeMood :: Mood -> Mood
+4.
+changeMood Blah = Woot
+changeMood _ = Blah
+5.ch4/mood.hs
+
+P.103 Exercises: Find the Mistakes
+1. true should be True
+2. = should be ==
+3. OK
+4. this sould be ["Merry"] > ["Happy"]
+5. should be only Int or String
+
+[[P.111 Chapter Exercises]]
+1. length :: [a] => Int
+   length :: Foldable t => t a -> Int
+   * number of arguments is 1
+   * result type is Int
+2. a) 5
+   b) 3
+   c) 2
+   d) 5
+
+3. The latter failes. Because, (/) :: Fractional a => a -> a -> a
+   but result type of length is Int. Int is not Fractional.
+4. 6 / (fromIntegral (length [1,2,3]))
+5. Bool, True
+6. False
+7.
+  * length allAwesome == 2 : works, because left clause is reduced to Int and right is inffered as 2::Int, result is true
+  * length [1, 'a', 3, 'b'] : NG, because elements in list are mixture of Num and Char
+  * length allAwesome + length awesome : works, because each terms are reduced to Int, result = 5 :: Int
+  * (8 == 8) && ('b' < 'a') : works, because this is evaluated to True && False, result is False
+  * (8 == 8) && 9 : NG, because 9 is not Bool
+8. ch4/parindrome.hs
+9. ch4/myAbs.hs
+10. ch4/fstSnd.hs
+
+P.113 Correcting syntax
+1-3. ch4/correctingSyntax1.hs
+
+P.114 Match the function names to thier types
+1. c
+2. b
+3. a
+4. d
+
+[[chapter5]]
+P.127 Exercises: Type Matching
+1. c  not :: Bool -> Bool
+2. d  length :: Foldable f => f a -> Int
+3. b  concat :: Foldable f => f [a] -> [a]
+4. a  head :: Foldable f => f a -> a
+5. e  (<) :: Ord a => a -> a -> Bool
+
+
+P.130 memo
+a -> b -> c -> d
+a -> b -> (c -> d)
+a -> (b -> (c -> d))
+a -> b -> c -> d
+
+map :: (a -> b) -> [a] -> [b]
+map :: (a -> b) -> ([a] -> [b])
+
+f :: a -> b
+
+map f :: [a] -> [b]
+
+P.136 Exercises: Type Arguments
+1. a
+2. d
+3. d
+4. c
+5. a
+6. e
+7. d
+8. a
+9. c
+
+P.142 Exercises: Parametericity
+1.
+Prelude> myId :: a -> a; myId x = undefined
+Prelude> myId 1
+*** Exception: Prelude.undefined
+CallStack (from HasCallStack):
+  error, called at libraries/base/GHC/Err.hs:78:14 in base:GHC.Err
+  undefined, called at <interactive>:37:26 in interactive:Ghci13
+
+Prelude> myId :: a -> a; myId x = myId x
+Prelude> myId 1
+^CInterrupted.
+-- infinite loop
+
+2.
+Prelude> id2 :: a -> a -> a; id2 x y = x
+Prelude> id2 1 2
+1
+Prelude> id2 "aaa" "bbb"
+"aaa"
+Prelude> id2 :: a -> a -> a; id2 x y = y
+Prelude> id2 1 2
+2
+Prelude> id2 "aaa" "bbb"
+
+Prelude> id2 1 "bbb"
+
+<interactive>:50:5: error:
+    • No instance for (Num [Char]) arising from the literal ‘1’
+    • In the first argument of ‘id2’, namely ‘1’
+      In the expression: id2 1 "bbb"
+      In an equation for ‘it’: it = id2 1 "bbb"
+
+3. There can be only one implementation.
+Prelude> id2' :: a -> b -> b; id2' x y = y
+Prelude> id2' 2 3
+3
+Prelude> id2' "aaa" 3
+3
+Prelude> id2' "aaa" "bbb"
+"bbb"
+
+
+P.147 Exercises: Apply Yourself
+1. myConcat :: [Char] -> [Char], because result type is [Char] since " yo" has type [Char]
+2. myMult :: Fractional a => a -> a, because (/) :: (Fractional a) => a -> a -> a
+3. myTake :: Int -> [Char], because second argument of take is "hey you" has [Char]
+4. myCom :: Int -> Bool, because length :: [a] -> Int
+5. myAlph :: Char -> Bool, because 'z' has char
+
+
+[[P.149 Chapter Exercises]]
+P.150 Multiple choice
+1. c
+2. a
+3. b
+4. c
+
+P.150 Determine the type
+1.
+  a. Num a => a
+  b. Num a => (a, [Char])
+  c. (Integer, [Char])
+  d. Bool
+  e. Int
+  f. Bool
+2. Num a => a
+3. Num a => a -> a
+4. Fractional a => a
+5. [Char]
+
+P.152 Does it compole?
+1. NG, because bigNum :: Num a => a
+2. OK
+3. NG, because b :: Num a => a
+4. NG, because c is not in scope
+
+P.152 Type variable or specific type constructor
+1. answer is in book
+2. f :: zed -> Zed -> Blah
+        [1]    [2]    [3]
+    fully polymorpic: [1]
+    concrete: [2], [3]
+3. f :: Enum b => a -> b -> c
+                 [1]  [2]  [3]
+     constrained polymorpic: (Enum) [2]
+     fully polymorpic: [1], [3]
+ 4. f :: f -> g -> c
+         [1]  [2]  [3]
+     fully polymorpic: [1], [2], [3]
+
+P.153 Write a type signature
+1..3. ch5/typeSignature.hs
+
+P.154 Given a type, write the function
+1..8 ch5/givenATypeWriteTheFunction.hs
+
+P.156 Fix it
+1..2 ch5/Sing.hs
+3. ch5/arith3Broken.hs
+
+P.157 Type-Known-Do
+1..4 ch5/typeKwonDo.hs
+
+[[Chapter 6]]
+P.179 Exercises: Eq Instances
+1..7 ch6/eqInstances.hs
+
+P.181 Exercises: Tuple Experiment
+on REPL
+
+P.193 Exercises: Will They Work?
+1. OK, 5
+2. OK, LT
+3. NG, String and Bool
+4. OK, False
+
+[P.206 Chapter Exercises]
+P.206 Multiple choice
+1. c
+2. b
+3. a
+4. c
+5. a
+
+P.207 Does it typecheck?
+corrected version is ch6/doesItTypeCheck.hs
+1. NG, because Person doesn't have Show instance.
+2. NG, because Mood doesn't have Eq instance.
+3. a) Woot and Blah
+   b) error occuered. Because the type class of 9 is Num, and Mood doesn't have Num instance.
+   c) error occered. Because Mood doesn't have Ord instance.
+4. OK ## mistake at the 1st time
+
+P.209 Given a datatype declaration, what can we do?
+1. NG, Because "chases" is String and True is Bool
+2. OK
+3. OK
+4. NG, Because Papu doesn't have instance of Ord
+
+P.210 Match the types
+1. NG.
+2. NG, ## mistake at the 1st time
+3. OK
+4. OK
+5. OK
+6. OK
+7. NG
+8. NG
+9. OK
+10. OK, ## mistake at the 1st time
+11. NG
+
+P.211 Type-Known-Do Two: Electric Typealoo
+1..2 ch6/typeKwonDoTwo.hs
+
+[[Chapter7]]
+P.224 Exercises: Grab Bag
+1. all are equivalent -> actual d has Integer -> Integer -> Integer -> Integer without type annotation
+2. d
+3. ch7/grabBag.hs
+
+P.235 Exercises: Variety Pack
+1. a) (a, b) -> a
+   b) String, it is not same as neigher k1 or k3.
+   c) k1, k3
+2. f::(a,b,c) -> (d,e,f) -> ((a,d),(c,f))
+   f (a,b,c) (d,e,f) = ((a,d), (c,f))
+
+P.237 Exercises: Case Practice
+1..3 ch7/casePractice.hs
+
+P.245 Exercises: Artful Dodgy
+1. x is bound to 1 :: Num a => a, y is bound to 0 :: Num a => a, then 1 + 0 * 10 = 1 ::Num a => a
+2. 11
+3. 22
+4. 21
+5. 12
+6. 11
+7. 21
+8. 21
+9. 22
+10. 31
+11. 23
+function name "oneIsTwo" is dodgy!
+
+P.251 Exercises: Guard Duty
+1. ch7/inText.hs  it always returns 'F'!!
+2. ch7/inText.hs when 90, it returns 'C'. it never returns 'A', neither 'B'.
+3. b
+4. Eq a => [a] ## missing Eq a at 1st
+5. Eq a => [a] -> Bool ## missing Eq a at 1st
+6. c
+7. (Num a, Ord a) => a
+8. (Num a, Ord a, Num b) => a -> b
+
+
+[P.261 Chapter Exercises]
+P.261 Multiple choice
+1. d
+2. b
+3. d
+4. b
+5. a
+
+P.262 Let's write Code
+1. a) ch7/letsWriteCode.hs
+   b) yes
+   c) ch7/letsWriteCode.hs
+2. ch7/letsWriteCode.hs
+3. ch7/letsWriteCode.hs
+4..6 ch7/arith4.hs
+
+
+[[Chapter8]]
+P.279 Intermission: Exercise
+  applyTimes 5 (+1) 5
+= (+1) . applyTimes (5-1) (+1) $ 5
+= (+1) . applyTimes 4     (+1) $ 5
+= (+1) . ((+1) . applyTimes (4 - 1) (+1) $ 5)
+= (+1) . ((+1) . applyTimes 3       (+1) $ 5)
+= (+1) . ((+1) . ((+1) . applyTimes (3 - 1) (+1) $ 5))
+= (+1) . ((+1) . ((+1) . applyTimes 2       (+1) $ 5))
+= (+1) . ((+1) . ((+1) . ((+1) . applyTimes (2 -1) (+1) $ 5)))
+= (+1) . ((+1) . ((+1) . ((+1) . applyTimes 1      (+1) $ 5)))
+= (+1) . ((+1) . ((+1) . ((+1) . ((+1) . applyTimes (1 - 1) (+1) $ 5))))
+= (+1) . ((+1) . ((+1) . ((+1) . ((+1) . applyTimes 0       (+1) $ 5))))
+= (+1) . ((+1) . ((+1) . ((+1) . ((+1) (applyTimes 0        (+1)   5)))))
+= (+1) . ((+1) . ((+1) . ((+1) . ((+1)                             5))))
+= (+1) . ((+1) . ((+1) . ((+1) $ 6)))
+= (+1) . ((+1) . ((+1) $ 7 ))
+= (+1) . ((+1) $ 8)
+= (+1) 9
+= 10

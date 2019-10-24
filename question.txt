@@ -1,0 +1,9 @@
+P.141
+if something has an instance of Num but not an instance of Integral,
+it can’t implement the methods of the Integral type class.
+A subclass cannot override the methods of its superclass.
+
+Q: Both sentences have convinced me, but are meanings of each independent?
+
+
+P.197 para1 print should be gothic
