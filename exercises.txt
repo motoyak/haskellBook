@@ -526,3 +526,51 @@ P.279 Intermission: Exercise
 = (+1) . ((+1) $ 8)
 = (+1) 9
 = 10
+
+[P.290 Capter exercises]
+P.290 Review of types
+1. d ## mistook at the 1st time
+2. b
+3. d
+4. b
+
+P.291 Reviewing currying
+1. "woops mrow woohoo!"
+2. "1 mrow haha"
+3. "woops mrow 2 mrow haha"
+4. "woops mrow blue mrow haha"
+5. "pink mrow haha mrow green mrow woops mrow blue"
+6. "are mrow Pugs mrow awesome"
+
+P.292 Recursion
+1.
+dividedBy 15 2 =
+go 15 2 0
+  | otherwise = go (15 - 2) 2 (0 + 2)
+go (15 - 2) 2 (0 + 1)
+go 13 2 1
+go (13 - 2) 2 (1 + 1)
+go 11 2 2
+go (11 - 2) 2 (2 + 1)
+go 9 2 3
+go (9 - 2) 2 (3 + 1)
+go 7 2 4
+go (7 - 2) 2 (4 + 1)
+go 5 2 5
+go (5 - 2) 2 (5 + 1)
+go 3 2 6
+go (3 - 2) 2 (6 + 1)
+go 1 2 7
+  | 1 < 2 = (7, 1)
+(7, 1)
+
+2..3 ch8/recursion.hs
+
+P.292 Fixing dividedBy
+ch8/divide.hs
+
+P.293 McCarthy 91 function
+ch8/mcCarthy91.hs
+
+P.294 Numbers int words
+ch8/wordNumber.hs
