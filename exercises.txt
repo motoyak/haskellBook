@@ -574,3 +574,12 @@ ch8/mcCarthy91.hs
 
 P.294 Numbers int words
 ch8/wordNumber.hs
+
+
+[[Chapter9]]
+P.303 Exercises: EnumFromTo
+ch9/enumFrom.hs
+
+P.307 Exercises: Thy Fearful Symmetry
+1. ch9/myWords.hs
+2. ch9/poemLines.hs
