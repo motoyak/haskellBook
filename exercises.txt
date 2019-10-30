@@ -621,9 +621,9 @@ P.322 Exercises: Bottom Madness
 P.322 Intrermission: Is it in normal form?
 1. 1
 2. 2
-3. 1
-4. 1
-5. 1
+3. 3
+4. 3
+5. 3
 6. 3
 7. 2
 

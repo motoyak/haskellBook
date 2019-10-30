@@ -8,6 +8,14 @@ Q: Both sentences have convinced me, but are meanings of each independent?
 
 P.197 para1 print should be gothic
 
+P.318
+Prelude> num :: [Int]; num = [1, 2, 3]
+Prelude> :sprint num
+num = [1,2,3]
+
+in GHCi 8.6.5
+Prelude> :sprint num
+num = _
 
 
 P.322 Intermission: Is it in normal form?
