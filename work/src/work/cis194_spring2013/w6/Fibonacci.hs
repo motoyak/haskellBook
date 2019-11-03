@@ -85,4 +85,40 @@ instance Num (Stream Integer) where
   fromInteger n = streamMap (\m -> if m == 0 then n else 0) nats
   negate = streamMap negate
   (+) (Cons a as) (Cons b bs) = Cons (a + b) (as + bs)
-  (*) (Cons a as) (Cons b bs) = Cons (a * b) (streamMap (a*) bs + as * Cons b bs)
+  (*) (Cons a as) (Cons b bs) = Cons (a * b) (streamMap (a*) bs + as*Cons b bs)
+
+instance Fractional (Stream Integer) where
+  (/) (Cons a as) (Cons b bs)
+    | b==0 = as / bs
+    | otherwise =
+      let q = Cons a as / Cons b bs
+      in
+      Cons (a `myDiv` b) (streamMap (`myDiv` b) $ as - q*bs)
+      where
+        myDiv x y
+         | y == 0 = 0
+         | otherwise = signum x * signum y * div (abs x) (abs y)
+
+fibs3 :: Stream Integer
+fibs3 = x / (1 - x - x^2)
+
+
+data Matrix = Matrix Integer Integer Integer Integer
+
+instance Num Matrix where
+  (*) (Matrix a00 a01 a10 a11) (Matrix b00 b01 b10 b11) =
+    Matrix (a00*b00 + a10*b01) (a01*b00 + a11*b01) (a00*b10 + a10*b11) (a01*b10 + a11*b11)
+
+instance Show Matrix where
+  show (Matrix a00 a01 a10 a11) = "|" ++ show a00 ++ " " ++ show a10 ++ "|\n" ++ "|" ++ show a01 ++ " " ++ show a11 ++ "|"
+
+pickMatrix01 :: Matrix -> Integer
+pickMatrix01 (Matrix _ x _ _) = x
+
+fib4 :: Integer -> Integer
+fib4 n
+  | n ==0 = 0
+  | otherwise =
+    let fibSeed = Matrix 1 1 1 0
+    in
+    pickMatrix01 $ fibSeed ^ n
