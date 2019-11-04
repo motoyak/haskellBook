@@ -654,3 +654,41 @@ toUpper :: Char -> Char
 2..6 ch9/data.Char.hs
 
 P.335 Ciphers
+ch9/cipher.hs
+
+P.337 Writing your own standard functions
+ch9/myStandard.hs
+
+[[Chapter10]]
+P.360 Exercises: Understanging Folds
+1. b and c
+2.
+foldl (flip (*)) 1 [1..3]
+f = flip (*)
+(((1 `f` 1) `f` 2) `f` 3)
+(((1 * 1) `f` 2) `f` 3)
+((1 `f` 2) `f` 3)
+((2 * 1) `f` 3)
+(2 `f` 3)
+(3 * 2)
+3. c
+4. a
+5.
+a) foldr (++) "" ["woot", "WOOT", 'woot']
+b) foldr max 'a' "fear is the little death"
+c) foldr (&&) True [False, True]
+d) foldr (||) False [False, True]
+e) foldl (flip ((++),show)) "" [1..5]
+f) foldr (flip const) 'a' [1..5]
+g) foldr (flip const) 0 "tacos"
+h) foldl const 0 "burritons"
+i) foldl const 'z' [1..5]
+
+P.366 Exercises: Database Processing
+ch10/databaseProcessing.hs
+
+P.374 Scans Exercises
+1..3 ch10/inText.hs
+
+[P.374 Chapter Exercises]
+P.374 Warm-up and review

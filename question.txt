@@ -27,3 +27,8 @@ uncertain.
 5. 1
 6. 3
 7. 2
+
+P.363
+How force evaluation affects performance.
+unevaluated expression is thunk?
+Why many thunks effects negatively on performance.
