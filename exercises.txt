@@ -692,3 +692,13 @@ P.374 Scans Exercises
 
 [P.374 Chapter Exercises]
 P.374 Warm-up and review
+1. a..c ch10/warmUpAndReview.hs
+2.
+seekritFunc returns an average length of words in a sentence.
+seekritFunc :: String -> Int
+seekritFunc x =
+  div (sum (map length (words x)))
+      (length (words x))
+3. ch10/warmUpAndReview.hs
+
+P.375 Rewriting functions using folds
