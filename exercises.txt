@@ -762,4 +762,5 @@ P.432 Exercises: The Quad
 
 P.440 Write map for BinaryTree
 P.442 Convert binary trees to lists
+P.443 Writefoldr for BinaryTree
 ch11/binaryTree.hs
