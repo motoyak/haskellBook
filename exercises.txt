@@ -702,3 +702,64 @@ seekritFunc x =
 3. ch10/warmUpAndReview.hs
 
 P.375 Rewriting functions using folds
+1..11 ch10/reqriteUsingFolds.hs
+
+[[Chapter11]]
+P.391
+1. a type constructor
+2. * -> *
+3. *
+4. Num a => Doggies a
+5. Doggies Integer
+6. Doggies String
+7. a type constructor and a data constructor
+8. doge -> DogueDeBordeaux doge -- mistake at 1st
+9. DogueDeBordeaux String
+
+
+P.394 Exercises: Vehicles
+1...5 ch11/vehicle.hs
+4. I designed that a error occuers when argument is Plane.
+
+P.399 Exercises: Cardinality
+1. 1
+2. 3
+3. Int8: 256, Int16: 65536
+4. Int: has finite cardinality, Integer infinite cardinality
+5. cardinality = 2 ^ 8
+
+P.400 Exercises: For Example
+1. Example, An Error occuers since Example is not a data constructor.
+2.
+Followings are shown;
+  data Example = MakeExample
+  instance [safe] Show Example
+It has Show type class instance.
+3.
+data Example' = MakeExample' Int deriving Show
+Then, follwing is shown with :i MakeExample';
+MakeExample' :: Int -> Example'
+
+P.405 Exercises: Logic Goats
+1..3 ch11/logicGoats.hs
+
+P.407 Exercises: Pity the Bool
+1. 2 + 2 = 4
+2. 256 + 2 = 258
+overflowed-literals warning has occuered
+"Literal xxx is out of the Int 8 range -128..127"
+
+P.415 Exercises: How Does Your Garden Grow?
+1. ch11/inText.hs
+
+P.432 Exercises: The Quad
+1. 4 + 4 = 8
+2. 4 * 4 = 16
+3. 4 ^ 4 = 256
+4. 2 * 2 * 2 = 8
+5. (2 ^ 2) ^ 2 = 2 ^ (2*2) = 2 ^ 4 = 16
+6. (4 ^ 4) ^ 2 = 4 ^ (4*2) = 4 ^ 8 = 65536
+
+P.440 Write map for BinaryTree
+P.442 Convert binary trees to lists
+ch11/binaryTree.hs

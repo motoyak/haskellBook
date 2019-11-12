@@ -32,3 +32,7 @@ P.363
 How force evaluation affects performance.
 unevaluated expression is thunk?
 Why many thunks effects negatively on performance.
+
+
+P.408
+-128 :: Int8 is permitted with default setting of GHCi.
