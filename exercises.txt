@@ -777,3 +777,9 @@ ch11/vigenere.hs
 
 P.445 As-patterns
 ch11/aspatterns.hs
+
+P.447 Language exercises
+ch11/languageExercises.hs
+
+P.447 Phone exercise
+ch11/phone.hs
