@@ -764,3 +764,16 @@ P.440 Write map for BinaryTree
 P.442 Convert binary trees to lists
 P.443 Writefoldr for BinaryTree
 ch11/binaryTree.hs
+
+[P.443 Chapter Exercises]
+P.443 Multiple choice
+1. a
+2. f
+3. b
+4. c
+
+P.444 Ciphers
+ch11/vigenere.hs
+
+P.445 As-patterns
+ch11/aspatterns.hs
