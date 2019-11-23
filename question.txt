@@ -36,3 +36,36 @@ Why many thunks effects negatively on performance.
 
 P.408
 -128 :: Int8 is permitted with default setting of GHCi.
+
+P.470
+Determine the kinds:
+Answers are uncertain.
+
+
+P.516-517
+Explanation of the example is bit confusing.
+
+1. The first argument is our Puzzle with its three arguments.
+2. The 𝑐 is our Char argument and is the character the player
+guessed on this turn, with guessed representing the list of characters already guessed.
+3. Our result is the Puzzle with the discovered replaced by newDiscovered the 𝑐 consed onto the front of the guessed list.
+4. zipper is a combining function for deciding how to handle the
+character in the word, what’s been guessed already, and the character that was just guessed. If the current character in the word is equal to what the player guessed, then we go ahead and return Just wordChar to fill in that spot in the puzzle. Otherwise, we kick the discoveredChar back out. We kick discoveredChar back out because it might either be a previously correctly guessed character or a Nothing that has not been guessed correctly this time nor in the past.
+5. nowGuessed is the character they now guessed.
+6. wordChar is the characters in the puzzle word – not the ones
+they’ve guessed or not guessed, but the characters in the word
+that they’re supposed to be guessing.
+7. discoveredChar is the character that the player has discovered or not.
+8. This if-then-else expression checks to see if the guessed character is one of the word characters. If it is, it wraps it in a Just because our puzzle word is a list of Maybe values.
+9. newDiscovered is the new state of the puzzle which uses zipWith
+and the zipper combining function to fill in characters in the
+puzzle. The zipper function is first applied to the character the
+player just guessed because that doesn’t change. Then it’s zipped
+across two lists. One list is word which is the word the user is
+trying to guess. The second list, discovered is the puzzle state
+we’re starting with of type [Maybe Char]. That’s telling us which
+characters in word have been guessed.
+10. Now we’re going to make our newFilledInSoFar by using zipWith.
+You may remember this from the Lists chapter. It’s going to zip
+the word with the discovered values while applying the zipper
+function from just above it to the values as it does.

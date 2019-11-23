@@ -783,3 +783,49 @@ ch11/languageExercises.hs
 
 P.447 Phone exercise
 ch11/phone.hs
+
+P.450 Hutton's Razor
+ch11/huttonsRazor.hs
+
+[[Chpter12]]
+[ChapterExercises]
+P.470 Determine the kinds
+1. a:: *
+2. a:: * , f:: * -> *
+
+P.471 String processing
+ch12/stringProcessing.hs
+
+P.472 Validate the word
+ch12/validateTheWord.hs
+
+P.472 It's only Natural
+ch12/onlyNatural.hs
+
+P.473 Small library for Maybe
+ch12/libMaybe.hs
+
+P.475 Small library for Either
+ch12/libEither.hs
+
+
+[[Chapter13 Building projects]]
+P.495 Intermission: Check your understanding
+1. forever, when
+2. fromListBE
+3. Database.Blacktip.Types
+4.
+a) MV  Control.Concurrent.MVar,
+   FPC Filesystem.Path.CurrentOS
+   CC  Control.Concurrent
+b) Filesystem
+c) Control.Monad
+
+[P.521 Chpter Exercises]
+P.521 Hangman game logic
+ch13/hangman/exe/Main.hs
+
+P.522 Modifying code
+1. ch13/Cipher.hs
+2..3. ch13/palindrome.hs
+4. ch13/chEx4.hs
