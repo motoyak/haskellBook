@@ -69,3 +69,10 @@ characters in word have been guessed.
 You may remember this from the Lists chapter. It’s going to zip
 the word with the discovered values while applying the zipper
 function from just above it to the values as it does.
+
+P.535
+Intermission:
+on previous exercise, you instructed using Integral.
+
+P.541 last paragraph
+pick()) -> pick()
