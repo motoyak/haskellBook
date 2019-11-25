@@ -76,3 +76,10 @@ on previous exercise, you instructed using Integral.
 
 P.541 last paragraph
 pick()) -> pick()
+
+
+P.562 Using QuickCheck
+QuickCheck cannot check polymorpicity?
+-> polyQUickCheck, monomorphic
+
+QuickCheck : multiple aruments and forAll ?? need to each argument?

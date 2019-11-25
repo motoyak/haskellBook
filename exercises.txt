@@ -829,3 +829,11 @@ P.522 Modifying code
 1. ch13/Cipher.hs
 2..3. ch13/palindrome.hs
 4. ch13/chEx4.hs
+
+[[Chapter14 Testing]]
+[P.561 Chapter Exercises]
+P.561 Validating numbers into words
+ch14/work/tests/tests.hs
+
+P.562 Using QuickCheck
+1.
