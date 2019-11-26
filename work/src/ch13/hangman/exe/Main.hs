@@ -77,7 +77,7 @@ fillInCharacter (Puzzle word discovered guessed) c =
         then Just wordChar
         else discoveredChar
       newGuessed =
-        if c `elem` word || c `elem` word
+        if c `elem` word || c `elem` guessed
         then guessed
         else c : guessed
 

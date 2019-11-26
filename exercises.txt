@@ -836,4 +836,18 @@ P.561 Validating numbers into words
 ch14/work/tests/tests.hs
 
 P.562 Using QuickCheck
-1.
+1..11 ch14/work/src/usingQuickCheck.hs
+
+P.564 Failure
+Because there is rounding error which is accumulated during floating point arithmetic.
+
+P.564 Idempotence
+ch14/work/src/usingQuickCheck.hs
+
+P.565 Make a Gen random generator for the datatype
+ch14/work/src/usingQuickCheck.hs
+
+P.565 Hangman testing
+ch14/work/src/hangman.hs
+
+P.567 Validating ciphers

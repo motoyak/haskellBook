@@ -1,6 +1,8 @@
-module Cipher (caesar, vigenere) where
+{-# LANGUAGE ScopedTypeVariables #-}
+module Ciphers where
 
 import Data.Char
+import Test.QuickCheck
 
 numAlp :: Int
 numAlp = 26
@@ -52,6 +54,7 @@ vigenere originalK originalX = vigenere' originalK originalX
     | otherwise = x : vigenere' (k:ks) xs
 
 
+
 getCaesar :: Int -> IO String
 getCaesar n = do
   word <- getLine
@@ -61,3 +64,31 @@ getVigenere :: String -> IO String
 getVigenere key = do
   word <- getLine
   return $ vigenere key word
+
+
+unVigenere :: String -> String -> String
+unVigenere key = vigenere $ revKey key
+
+revKey :: String -> String
+revKey = map rev
+  where
+    rev c
+      | c `elem` ['a'..'z'] = flip doRev c (ord 'a', ord 'z')
+      | c `elem` ['A'..'Z'] = flip doRev c (ord 'A', ord 'Z')
+      | otherwise = c
+    doRev base = chr. flip subtract (snd base). flip mod 26 . subtract (fst base+1) . ord
+
+
+testVigenere :: IO ()
+testVigenere = quickCheck . verbose $
+  property $
+   \ (key  :: String)
+     (text :: String) ->
+    (unVigenere key . vigenere key) text == text
+
+testCaesar :: IO ()
+testCaesar = quickCheck . verbose $
+  property $
+   \ (key  :: Int)
+     (text :: String) ->
+    (unCaesar key . caesar key) text == text

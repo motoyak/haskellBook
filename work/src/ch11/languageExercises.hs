@@ -3,6 +3,7 @@ module LanguageExercises where
 import Data.Char
 
 capitalizeWord :: String -> String
+capitalizeWord [] = ""
 capitalizeWord (x:xs)
   | x == ' ' || x == '.' = x : capitalizeWord xs
   | otherwise = toUpper x : xs

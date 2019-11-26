@@ -2,10 +2,12 @@ module Vigenere where
 
 import Data.Char
 
-numAlp = 26 :: Int
+numAlp :: Int
+numAlp = 26
+ordA :: Int
 ordA = ord 'A'
+orda :: Int
 orda = ord 'a'
-
 
 vigenere :: String -> String -> String
 vigenere "" xs = xs
@@ -15,14 +17,15 @@ vigenere originalK originalX = vigenere' originalK originalX
   vigenere' "" xs = vigenere' originalK xs
   vigenere' _ "" = ""
   vigenere' (k:ks) (x:xs)
-    | x `elem` ['A'..'Z'] || x `elem` ['a'..'z'] =
+    | (k `elem` ['A'..'Z'] || k `elem` ['a'..'z']) && (x `elem` ['A'..'Z'] || x `elem` ['a'..'z']) =
       let
+        baseK = getOrd k
         baseX = getOrd x
         tr
           | x `elem` ['A'..'Z'] || x `elem` ['a'..'z'] = rShift (rShiftNum k) x
           | otherwise = x
         rShift n = chr . (+baseX) . flip mod numAlp . subtract baseX . (+n) . ord
-        rShiftNum = subtract baseX . ord
+        rShiftNum = subtract baseK . ord
         getOrd a
           | a `elem` ['A'..'Z'] = ordA
           | a `elem` ['a'..'z'] = orda

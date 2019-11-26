@@ -4,6 +4,7 @@ module UsingQuickCheck where
 
 import Test.QuickCheck
 import Data.List (sort)
+import Data.Char (toUpper)
 
 half :: Fractional a => a -> a
 half x = x / 2
@@ -221,3 +222,65 @@ testPartialLength = quickCheck . verbose $
   forAll (nonEmptyIntegerListGen n :: Gen [Integer]) $ \xs ->
     f n xs == n
     where f m ys = length (take m ys)
+
+showableGen :: (Arbitrary a, Show a, Eq a) => Gen a
+showableGen = do
+  a <- arbitrary
+  return a
+
+testShowRead :: IO ()
+testShowRead = quickCheck . verbose $
+  forAll (showableGen :: Gen String) $ \x ->
+    f x == x
+    where f y = read (show y)
+
+testSqrtId :: IO ()
+testSqrtId = quickCheck . verbose .
+  whenFail (putStrLn "not ident because of floating arithmetic rounding error") $
+  property $ \ (x :: Double) ->
+  squareIdentity x == x
+  where
+    squareIdentity = square . sqrt
+    square y = y * y
+
+twice :: (a -> a) -> (a -> a)
+twice f = f . f
+fourTimes :: (a -> a) -> (a -> a)
+fourTimes = twice . twice
+
+capitalizeWord :: String -> String
+capitalizeWord [] = ""
+capitalizeWord (x:xs)
+  | x == ' ' || x == '.' = x : capitalizeWord xs
+  | otherwise = toUpper x : xs
+
+testIdempotence1 :: IO ()
+testIdempotence1 = quickCheck . verbose $
+  property $ \ (xs :: String) ->
+  f xs
+  where
+    f x = (capitalizeWord x == twice capitalizeWord x)
+      &&  (capitalizeWord x == fourTimes capitalizeWord x)
+
+testIdempotence2 :: IO ()
+testIdempotence2 = quickCheck . verbose $
+  property $ \ (xs :: [String]) ->
+  f xs
+  where
+    f x = (sort x == twice sort x)
+      &&  (sort x == fourTimes sort x)
+
+
+data Fool =
+    Fulse
+  | Frue
+  deriving (Eq, Show)
+
+genFoolEven :: Gen Fool
+genFoolEven = do
+  elements [Fulse, Frue]
+
+genFoolFulse2 :: Gen Fool
+genFoolFulse2 = do
+  frequency [ (2, return Fulse)
+            , (1, return Frue)]
