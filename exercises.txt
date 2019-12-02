@@ -821,7 +821,7 @@ a) MV  Control.Concurrent.MVar,
 b) Filesystem
 c) Control.Monad
 
-[P.521 Chpter Exercises]
+[P.521 Chapter Exercises]
 P.521 Hangman game logic
 ch13/hangman/exe/Main.hs
 
@@ -851,3 +851,10 @@ P.565 Hangman testing
 ch14/work/src/hangman.hs
 
 P.567 Validating ciphers
+ch14/word/src/Cipher.hs
+
+[[Chaper15 Monoid, Semigroup]]
+P.586 Exercise: Optional Monoid
+
+P.593 Madness
+ch15/madness.hs

@@ -83,3 +83,11 @@ QuickCheck cannot check polymorpicity?
 -> polyQUickCheck, monomorphic
 
 QuickCheck : multiple aruments and forAll ?? need to each argument?
+
+
+P.586
+OptionalMonoid
+need Semigroup instance
+
+P.603
+Parenthesized symbolic type constructor and back qutated alphanumeric one are permitted to use data declaration.
