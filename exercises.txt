@@ -858,3 +858,61 @@ P.586 Exercise: Optional Monoid
 
 P.593 Madness
 ch15/madness.hs
+
+P.599 Maybe Another Monoid
+ch15/MaybeAnotherMonoid.hs
+
+P.606 Chapter exercises
+P.606 Semigroup Exercises
+ch15/SemigroupEx.hs
+
+P.609 Monoid Exercises
+ch15/MonoidEx.hs
+
+
+[[Chapter16 Functor]]
+P.623 Exercises: Be Kind
+1. a :: *
+2. b :: * -> *  T :: * -> *
+3. c :: * -> * -> *
+
+P.645 Exercises: Heavy Lifting
+1. a = fmap (+1) $ read "[1]" :: [Int]
+2. b = (fmap . fmap) (++ "lol") (Just ["Hi,", "Hello"])
+3. c = fmap (*2) (\x -> x - 2)
+4. d = fmap ((return '1'++).show) (\x -> [x, 1..3])
+5. ch16/HeavyLifting.hs
+
+P.650 Exercises: Instances of Func
+1..7 ch16/InstancedOfFunctor.hs
+8. No. Because a kind of Trivial is *, type constant.
+
+P.654 Exercise: Possibly
+ch16/ignorePossibilities.hs
+
+P.656 Short Exercise
+1. ch16/ignorePossibilities.hs
+2. Because First or Either's Left are part of Functor structure.
+
+P.667 Chapter Exercises
+1. Cannot define Functor, Because kind is *
+2. 3. ch16/ChapterExercises.hs
+4. Cannot define Functor, Because kind is (*->*)-*
+5. Cannot define Functor, Because kind is *
+
+P.668 Rearrange the arguments
+1..3 ch16/ChapterExercises.hs
+
+[[Chapter17 Applicative]]
+P.689 Exercises: Lookups
+1..4 ch17/ExLookup.hs
+
+P.692 Exercise: Identity Instance
+ch17/ExIdentity.hs
+
+P.693 Exercise: Constant Instance
+ch17/ExConstant.hs
+
+P.707 Exercise: Fixer Upper
+ch17/ExFixerUpper.hs
+

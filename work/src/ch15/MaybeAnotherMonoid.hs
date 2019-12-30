@@ -10,10 +10,10 @@ monoidAssoc :: (Eq m, Monoid m) => m -> m -> m -> Bool
 monoidAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
 
 monoidLeftIdentity :: (Eq m, Monoid m) => m -> Bool
-monoidLeftIdentity a = (mempty <> a) == a
+monoidLeftIdentity a = (mempty `mappend` a) == a
 
 monoidRightIdentity :: (Eq m, Monoid m) => m -> Bool
-monoidRightIdentity a = (a <> mempty) == a
+monoidRightIdentity a = (a `mappend` mempty) == a
 
 
 data Optional a =

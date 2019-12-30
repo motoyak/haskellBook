@@ -91,3 +91,18 @@ need Semigroup instance
 
 P.603
 Parenthesized symbolic type constructor and back qutated alphanumeric one are permitted to use data declaration.
+
+P.713
+need definition of Semigroup Bull
+
+P.717
+* need definition of Semigroup (ZipList a)
+* indentation of definition Arbitrary (Sum a) is not correct
+* Arbitrary (ZipList a) and Arbitrary (Sum a) are defined in Test.QuickCheck.Arbitrary
+
+P.721
+Here toMyList is whatever function you’ve written to convert from
+the built-in list type to the hand-made List type.
+-> should be deleted because toMyList is not in code.
+Maybe, custom made list was used in older edition, but in current edition a definition of ZipList' is
+ newtype ZipList' a = ZipList' [a]

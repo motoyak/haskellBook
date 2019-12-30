@@ -177,10 +177,10 @@ testOr = quickCheck (semigroupAssoc :: OrAssoc Int String)
 
 
 newtype Combine a b =
-  Combine {unCombine :: (a -> b)} deriving (Eq, Show)
+  Combine {unCombine :: (a -> b)}
 
 instance (Semigroup b) => Semigroup (Combine a b) where
-  (<>) (Combine f) (Combine f') = Combine (\x -> (f x) <> (f' x))
+  (<>) (Combine f) (Combine g) = Combine (\x -> (f x) <> (g x))
 
 -- combGen :: (Semigroup b, Arbitrary (Fun a b)) =>  Gen (Combine a b)
 -- combGen = do
@@ -191,11 +191,11 @@ instance (Semigroup b) => Semigroup (Combine a b) where
 -- instance (Semigroup b, Arbitrary (Fun a b)) => Arbitrary (Combine a b) where
   -- arbitrary = combGen
 
-instance Show (a -> b) where
-  show f = "Function: a -> b"
+-- instance Show (a -> b) where
+  -- show f = "Function: a -> b"
 
-instance Eq (a -> b) where
-  (==) x y = x == y
+-- instance Eq (a -> b) where
+  -- (==) x y = x == y
 
 -- type CombAssoc a b = (Combine a b) -> (Combine a b) -> (Combine a b) -> Bool
 -- testCombine = quickCheck .verbose $ (semigroupAssoc :: CombAssoc Int (Sum Int))
@@ -207,9 +207,9 @@ combAssoc a b c x = (unCombine (a <> (b <> c)) $ x) == (unCombine ((a <> b) <> c
 testCombine :: IO ()
 testCombine = quickCheck . verbose $
   property $
-    \ (Fn (f :: Integer -> (Sum Integer)))
-      (Fn (g :: Integer -> (Sum Integer)))
-      (Fn (h :: Integer -> (Sum Integer)))
+    \ (Fn (f :: Integer -> Sum Integer))
+      (Fn (g :: Integer -> Sum Integer))
+      (Fn (h :: Integer -> Sum Integer))
       x ->
       combAssoc (Combine f) (Combine g) (Combine h) x
 
@@ -217,3 +217,59 @@ testCombine = quickCheck . verbose $
 -- g = Combine $ \n -> Sum (n - 1)
 
 -- sampleCombGen = sample (combGen :: Gen (Combine Integer (Sum Integer)))
+
+
+newtype Comp a =
+  Comp { unComp :: (a -> a)}
+
+instance (Semigroup a) => Semigroup (Comp a) where
+  (<>) (Comp f) (Comp g) = Comp (\x -> (f x) <> (g x))
+
+compAssoc :: (Eq a, Semigroup a) => Comp a -> Comp a -> Comp a -> a -> Bool
+compAssoc a b c x = (unComp (a <> (b <> c)) $ x) == (unComp ((a <> b) <> c) $ x)
+
+testComp :: IO ()
+testComp = quickCheck . verbose $
+  property $
+    \ (Fn (f :: Sum Integer -> Sum Integer))
+      (Fn (g :: Sum Integer -> Sum Integer))
+      (Fn (h :: Sum Integer -> Sum Integer))
+      x ->
+      compAssoc (Comp f) (Comp g) (Comp h) x
+
+
+data Validation a b =
+  Failure' a | Success' b
+  deriving (Eq, Show)
+
+instance Semigroup a => Semigroup (Validation a b) where
+  (<>) (Failure' x) (Failure' y) = Failure' (x <> y)
+  (<>) (Failure' _) (Success' y) = Success' y
+  (<>) (Success' x) _            = Success' x
+
+doValidation :: IO ()
+doValidation = do
+  let failure :: String
+              -> Validation String Int
+      failure = Failure'
+      success :: Int
+              -> Validation String Int
+      success = Success'
+  print $ success 1 <> failure "blah"
+  print $ failure "woot" <> failure "blah"
+  print $ success 1 <> success 2
+  print $ failure "woot" <> success 2
+
+instance (Arbitrary a, Arbitrary b) => Arbitrary (Validation a b) where
+  arbitrary = validGen
+    where
+      validGen = do
+        a <- arbitrary
+        b <- arbitrary
+        frequency $ [ (1, return $ Failure' a)
+                    , (1, return $ Success' b)]
+
+type ValidAssoc a b = (Validation a b) -> (Validation a b) -> (Validation a b) -> Bool
+
+testValidation :: IO ()
+testValidation = quickCheck . verbose $ (semigroupAssoc :: ValidAssoc String Int)
