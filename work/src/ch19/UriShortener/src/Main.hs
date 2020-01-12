@@ -23,9 +23,9 @@ randomElement xs = do
   return (xs !! randomDigit)
 
 shortyGen :: IO [Char]
-shortyGen =
-  replicateM 7 (randomElement alphaNum)
-  
+shortyGen = replicateM 7 (randomElement alphaNum)
+--shortyGen = return "ABCDEFG"
+
 saveURI :: R.Connection
         -> BC.ByteString
         -> BC.ByteString
@@ -88,8 +88,14 @@ app rConn = do
         shawty <- liftIO shortyGen
         let shorty = BC.pack shawty
             uri' = encodeUtf8 (TL.toStrict uri)
-        resp <- liftIO (saveURI rConn shorty uri')
-        html (shortyCreated resp shawty)
+        existing <- liftIO (getURI rConn shorty)
+        case existing of
+          Left reply -> text (TL.pack (show reply))
+          Right mbBS -> case mbBS of
+            Nothing -> do
+              resp <- liftIO (saveURI rConn shorty uri')
+              html (shortyCreated resp shawty)
+            Just _ -> text "double"
       Nothing -> text (shortyAintUri uri)
   get "/:short" $ do
     short <- param "short"

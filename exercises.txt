@@ -964,4 +964,8 @@ P.770 Write Monad Instances
 1..4 ch18/ExInstances.hs
 
 P.771 Write Functions
-1.
+1..6 ch18/ExFunctions.hs
+
+[[Chapter19 Applying structure]]
+P.803 Exercise
+ch19/UriShortener/src/Main.hs
