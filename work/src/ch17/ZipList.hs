@@ -44,11 +44,11 @@ zip' (f:fs) (x:xs) = f x : zip' fs xs
 zl' = ZipList'
 z = zl' [(+9), (*2), (+8)]
 z' = zl' [1..3]
-test1 = z <*> z'
+test1 = z <*> z' -- should be [10, 4, 11]
 z'' = pure 1
-test2 = z <*> z''
+test2 = z <*> z'' -- should be [10, 2, 9]
 z''' = zl' [1,2]
-test3 = pure id <*> z'''
+test3 = pure id <*> z''' -- should be [1, 2]
 
 trigger :: (Bool, Char, Int)
 trigger = undefined

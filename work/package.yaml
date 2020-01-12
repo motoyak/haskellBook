@@ -21,6 +21,13 @@ description:         Please see the README on GitHub at <https://github.com/moto
 
 dependencies:
 - base >= 4.7 && < 5
+- QuickCheck
+- checkers
+- hspec
+- containers
+- time
+- text
+- uuid
 
 library:
   source-dirs: src

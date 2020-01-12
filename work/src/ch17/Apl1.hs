@@ -13,6 +13,7 @@ instance Semigroup a
 instance Monoid a
   => Monoid (ZipList a) where
   mempty = pure mempty
+  --mempty = ZipList mempty
   mappend = liftA2 mappend
 
 --instance Arbitrary a
@@ -26,3 +27,8 @@ instance Monoid a
 instance Eq a
   => EqProp (ZipList a) where
   (=-=) = eq
+  
+main :: IO ()
+main = do
+  quickBatch $ semigroup (ZipList [undefined::Sum Int], undefined::Int)
+  quickBatch $ monoid (ZipList [undefined:: Sum Int])

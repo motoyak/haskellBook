@@ -36,6 +36,7 @@ append (Cons x xs) ys = Cons x $ xs `append` ys
 
 f = Cons (+1) (Cons (*2) Nil)
 v = Cons 1 (Cons 2 Nil)
+-- f <*> v should be Cons 2 (Cons 3 (Cons 2 (Cons 4 Nil)))
 
 fold :: (a -> b -> b) -> b -> List a -> b
 fold _ b Nil = b
@@ -55,10 +56,15 @@ toMyList :: [a] -> List a
 toMyList = foldr Cons Nil
 testX = toMyList [1,2,3]
 
+--flatMap testF testX
+--- should be Cons 1 (Cons 9 (Cons 2 (Cons 9 (Cons 3 (Cons 9 Nil)))))
+
+
 instance Eq a => EqProp (List a) where
   (=-=) = eq
-  
-trigger :: (String, Char, Int)
+
+type TriggerTypes = (String, Char, Int)
+trigger :: TriggerTypes
 trigger = undefined
 
 instance Arbitrary a => Arbitrary (List a) where
@@ -73,7 +79,7 @@ genList = do
 
 main :: IO ()
 main = do
-  quickBatch $ semigroup (Cons (undefined::Char) Nil, undefined::Int)
-  quickBatch $ monoid (Cons (undefined::Int) Nil)
-  quickBatch $ functor (Cons trigger Nil)
-  quickBatch $ applicative (Cons trigger Nil)
+  quickBatch $ semigroup (undefined :: List Char, undefined::Int)
+  quickBatch $ monoid (undefined :: List Int)
+  quickBatch $ functor (undefined :: List TriggerTypes)
+  quickBatch $ applicative (undefined :: List TriggerTypes)

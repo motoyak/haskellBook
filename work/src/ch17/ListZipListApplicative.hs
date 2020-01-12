@@ -95,13 +95,14 @@ instance Applicative ZipList' where
 zl' x = ZipList' $ toMyList x
 z = zl' [(+9), (*2), (+8)]
 z' = zl' [1..3]
-test1 = z <*> z'
+test1 = z <*> z' -- should be ZipList' (Cons 10 (Cons 4 (Cons 11 Nil)))
 z'' = pure 1
-test2 = z <*> z''
+test2 = z <*> z'' -- should be ZipList' (Cons 10 (Cons 2 (Cons 9 Nil)))
 z''' = zl' [1,2]
-test3 = pure id <*> z'''
+test3 = pure id <*> z''' -- should be ZipList' (Cons 1 (Cons 2 Nil))
 
-trigger :: (Bool, Char, Int)
+type TriggerTypes = (Bool, Char, Int)
+trigger :: TriggerTypes
 trigger = undefined
 
 instance Arbitrary a => Arbitrary (ZipList' a) where
@@ -116,13 +117,13 @@ genZipList' = do
 main :: IO ()
 main = do
   putStrLn "[Test: List]"
-  quickBatch $ semigroup (Cons (undefined::Char) Nil, undefined::Int)
-  quickBatch $ monoid (Cons (undefined::Int) Nil)
-  quickBatch $ functor (Cons trigger Nil)
-  quickBatch $ applicative (Cons trigger Nil)
+  quickBatch $ semigroup  (undefined :: List Char, undefined::Int)
+  quickBatch $ monoid (undefined :: List Int)
+  quickBatch $ functor (undefined :: List TriggerTypes)
+  quickBatch $ applicative (undefined :: List TriggerTypes)
   putStrLn "[Test: ZipList']"
-  quickBatch $ semigroup (ZipList' (Cons (undefined::Char) Nil), undefined::Int)
-  quickBatch $ monoid (ZipList' (Cons (undefined :: Int) Nil))
-  quickBatch $ functor (ZipList' (Cons trigger Nil))
-  quickBatch $ applicative (ZipList' (Cons trigger Nil))
+  quickBatch $ semigroup  (undefined :: ZipList' Char, undefined::Int)
+  quickBatch $ monoid (undefined :: ZipList' Int)
+  quickBatch $ functor (undefined :: ZipList' TriggerTypes)
+  quickBatch $ applicative (undefined :: ZipList' TriggerTypes)
 

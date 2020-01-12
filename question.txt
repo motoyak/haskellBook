@@ -100,9 +100,28 @@ P.717
 * indentation of definition Arbitrary (Sum a) is not correct
 * Arbitrary (ZipList a) and Arbitrary (Sum a) are defined in Test.QuickCheck.Arbitrary
 
+P.718
+difference mempty pure and mempty ZipList []
+quickBatch monoid -> mconcat is stall
+
 P.721
 Here toMyList is whatever function you’ve written to convert from
 the built-in list type to the hand-made List type.
 -> should be deleted because toMyList is not in code.
-Maybe, custom made list was used in older edition, but in current edition a definition of ZipList' is
+Maybe, custom made list was used in earlier edition, but in current edition a definition of ZipList' is
  newtype ZipList' a = ZipList' [a]
+
+P.725, 726
+missing titles of exercises
+
+P.780
+cannot reproduce
+-- but note what happens here:
+Prelude> f <> g
+fromList [('a',1)]
+
+explanations in xmonad part maybe mistook.
+fromList [...] is not function.
+
+P.801
+2nd line of definition of tbs should be indented

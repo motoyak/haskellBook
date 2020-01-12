@@ -916,3 +916,52 @@ ch17/ExConstant.hs
 P.707 Exercise: Fixer Upper
 ch17/ExFixerUpper.hs
 
+P.718 List Applicative Exercise
+ch17/ListApplicative.hs
+
+P.720 ZipList Applicative Exercise
+ch17/ZipList.hs, ch17/ListZipListApplicative.hs
+
+P.725 Validations on Either
+ch17/Validation.hs
+
+P.725 [Chapter Exercises]
+P.725 Given a type ...
+1.
+type []
+pure :: a -> [] a
+(<*>) :: [] (a -> b) -> [] a -> [] b
+
+2.
+type IO
+pure :: a -> IO a
+(<*>) :: IO (a -> b) -> IO a -> IO b
+
+3.
+type (,) t
+pure :: Monoid t => a -> (,) t a
+(<*>) :: Monoid  t => (,) t (a -> b) -> (,) t a -> (,) t b
+
+4. type (->) e
+pure :: a -> (->) e a
+(<*>) :: (->) e (a -> b) -> (->) e a -> (->) e b
+
+P.726 Write instances
+1..6 ch17/ExInstances.hs
+
+P.727 Combinations
+ch17/ExCombinations.hs
+
+[[Chapter18 Monad]]
+P.735 The answer is the exercise
+ch18/Bind.hs
+
+P.758 Short Exercise: Either Monad
+ch18/Sum.hs
+
+[P.770 Chapter Exercises]
+P.770 Write Monad Instances
+1..4 ch18/ExInstances.hs
+
+P.771 Write Functions
+1.
