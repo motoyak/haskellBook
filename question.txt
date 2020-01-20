@@ -125,3 +125,15 @@ fromList [...] is not function.
 
 P.801
 2nd line of definition of tbs should be indented
+
+P.814
+foldMap (+1) (Just 1) should be
+foldMap (+1) (Yep 1)
+
+P.832
+t in Traversable Laws is
+applicative transformation
+t :: (Applicative f, Applicative g) => f a -> g a
+which preserves the Applicative operations;
+  t (pure x) = pure x
+  t (x <*> y) = t x <*> t y

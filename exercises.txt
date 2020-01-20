@@ -969,3 +969,10 @@ P.771 Write Functions
 [[Chapter19 Applying structure]]
 P.803 Exercise
 ch19/UriShortener/src/Main.hs
+
+[[Chapter20 Foldable]]
+P.819 Exercises: Library Functions
+ch20/ExLibraryFunctions.hs
+
+[P.819 Chapter Exercises]
+all ch20/ChapterExercises.hs

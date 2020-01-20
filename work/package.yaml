@@ -28,6 +28,9 @@ dependencies:
 - time
 - text
 - uuid
+- wreq
+- bytestring
+- transformers
 
 library:
   source-dirs: src
