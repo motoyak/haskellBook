@@ -1,0 +1,17 @@
+{-# LANGUAGE FlexibleInstances #-}
+module LogicGoats where
+
+class TooMany a where
+  tooMany :: a -> Bool
+
+instance TooMany Int where
+  tooMany = (>42)
+
+instance TooMany (Int, String) where
+  tooMany (n, _) = tooMany n
+
+-- instance TooMany (Int, Int) where
+  -- tooMany (n, m) = tooMany $ n+m
+
+instance (Num a, TooMany a) => TooMany (a, a) where
+  tooMany (n, m) = tooMany $ n+m
