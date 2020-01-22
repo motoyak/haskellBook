@@ -347,6 +347,10 @@ instance Foldable Tree where
   foldMap f (Leaf x) = f x
   foldMap f (Node l x r) = foldMap f l `mappend` f x `mappend` foldMap f r
 
+--  foldr _ z Empty = z
+--  foldr f z (Leaf x) = f x z
+--  foldr f z (Node l x r) = f x (foldr f (foldr f z r) l)
+
 instance Traversable Tree where
   traverse _ Empty = pure Empty
   traverse f (Leaf x) = Leaf <$> f x

@@ -976,3 +976,19 @@ ch20/ExLibraryFunctions.hs
 
 [P.819 Chapter Exercises]
 all ch20/ChapterExercises.hs
+
+[[Chapter21 Traversable]]
+[P.839 Chapter Exercises]
+ch21/ChapterExercises.hs
+
+[[Chapter22 Reader]]
+P.850 Short Exercise: Warming Up
+ch22/WarmingUp.hs
+
+P.856 Exercise: Ask
+ch22/Ask.hs
+
+P.860 Exercise: Reading Comprehension
+all ch22/ReadingComprehension.hs
+
+P.864 Exercise: reader Monad
