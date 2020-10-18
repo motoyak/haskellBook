@@ -4,7 +4,7 @@ github:              "motoyak/work"
 license:             BSD3
 author:              "Motohiro Yakura"
 maintainer:          "motohiro686@gmail.com"
-copyright:           "2019 Motohiro Yakura"
+copyright:           "Motohiro Yakura"
 
 extra-source-files:
 - README.md
@@ -21,25 +21,6 @@ description:         Please see the README on GitHub at <https://github.com/moto
 
 dependencies:
 - base >= 4.7 && < 5
-- QuickCheck
-- checkers
-- hspec
-- containers
-- time
-- text
-- uuid
-- wreq
-- bytestring
-- transformers
-- random
-- dlist
-- trifecta
-- parsers
-- raw-strings-qq
-- attoparsec
-- parsec
-- aeson
-- scientific
 
 library:
   source-dirs: src

@@ -137,3 +137,22 @@ t :: (Applicative f, Applicative g) => f a -> g a
 which preserves the Applicative operations;
   t (pure x) = pure x
   t (x <*> y) = t x <*> t y
+
+ver1.0 below here
+
+P.878
+sg3 is undefined
+
+P.892
+correct:
+runState (f>>f) 0
+
+P.904
+1 eof is also in Trifecta
+
+P.906
+Prelude> parseByteString (char 'a') mempty "a"
+cause error
+need :set -XOverLoadedStrings
+
+P.938 need

@@ -992,3 +992,50 @@ P.860 Exercise: Reading Comprehension
 all ch22/ReadingComprehension.hs
 
 P.864 Exercise: reader Monad
+ch22/ReaderMonad.hs
+
+<< ver 1.0 >>
+
+[P.867 Chapter Exercises]
+P.867 A warm-up stretch
+ch22/ReaderMonad.hs
+P.871 Rewriting Shawty
+ch22/uriShortener
+
+[[Chapter23 State]]
+P.885 Exercises: Roll your own
+1..2 ch23/RandomExample2.hs
+
+[P.891 Chapter Exercises]
+1..5 ch23/ChapterExercises.hs
+
+[[Chapter24 Parser Combinators]]
+P.904 Exercises: Parsing practice
+1..3 ch24/LearnParsers.hs
+
+P.912 ExerciseL Unit of Success
+parseString (string "123">>eof>>return 123) mempty "123abc"
+
+P.924 Exercise: Try try
+ch24/ExFractions.hs
+
+P.954 Chapter exercises
+1. ch24/ChEx01.ha
+2..3 ch24/ChEx02_03.hs
+4. ch24/ChEx04.hs
+   Japan version in in progress.
+5.
+
+[[Chapter25 Composing Types]]
+P.969 GOTCHA! Exercise time
+ch25/Compose.hs
+
+P.971 Exercises: Compose instances
+1..2 ch25/Compose.hs
+
+[[Chapter26 Monad Transformers]]
+P.994 Exercises: EitherT
+1..5 ch26/EitherT.hs
+
+P.997 Exercises: StateT
+1..3 ch26/StateT.hs
